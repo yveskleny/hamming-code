@@ -1,13 +1,7 @@
-function G = criacao_matriz_geradora()
+function [G, H] = criacao_matriz_geradora()
 
-    I = eye(4);
-    p1 = [0 1 1 1]; 
-    p2 = [1 0 1 1]; 
-    p3 = [1 1 0 1]; 
-    %p4 = [1 1 1 0];
-    P = [p1' p2' p3'];
-    
-    G = [P I];
-
+    H = criacao_matriz_checagem_paridade();
+    P = H(:,4:7);
+    G = [P' eye(4)];
 end
 
