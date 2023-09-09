@@ -1,8 +1,8 @@
-function [qtd_erros, mensagensDecodificadas] = decodificacao(palavrasCodigoRecebidas, H)
+function [qtd_erros_ocorridos, mensagensDecodificadas] = decodificacao(palavrasCodigoRecebidas, H)
     
     [tamanhoPalavraCodigo, qtd_palavras] = size(palavrasCodigoRecebidas);
     mensagensDecodificadas = zeros(4, qtd_palavras);
-    qtd_erros = 0;
+    qtd_erros_ocorridos = 0;
 
     for i = 1:qtd_palavras
        palavraRecebida = palavrasCodigoRecebidas(:,i)';
@@ -10,7 +10,7 @@ function [qtd_erros, mensagensDecodificadas] = decodificacao(palavrasCodigoReceb
        if sindrome == false
            mensagensDecodificadas(:,i) = palavraRecebida(4:tamanhoPalavraCodigo)';
        else
-           qtd_erros = qtd_erros + 1;
+           qtd_erros_ocorridos = qtd_erros_ocorridos + 1;
            palavraCorrigida = correcao_erro(sindrome,H, palavraRecebida);
            mensagensDecodificadas(:,i) = palavraCorrigida(4:tamanhoPalavraCodigo)';
        end

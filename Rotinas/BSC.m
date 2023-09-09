@@ -4,7 +4,7 @@ function sequenciaRecebida = BSC(sequenciaEnviada)
     for i = 1:length(sequenciaEnviada)
        pe = rand();
        
-       if pe > 0.5
+       if pe > 0.1
           sequenciaRecebida(i) = sequenciaEnviada(i);
        else
           sequenciaRecebida(i) = mod(sequenciaEnviada(i) + 1,2);
